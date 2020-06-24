@@ -168,7 +168,10 @@ vi calico.yaml
 ```
 kubectl apply -f calico.yaml
 ```
-
+6. See the control plane come completly
+```
+kubectl apply -f calico.yaml
+```
 ##### Explore Kubernetes with Calico networking
 
 Let's look around and explore
