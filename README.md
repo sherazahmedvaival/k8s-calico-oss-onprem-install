@@ -319,6 +319,17 @@ default     trusted
 
 ```
 
+```
+kubectl run --image nginx nginx --port=80  -l fw-zone=trusted
+kubectl  get po -o wide
+```
+
+```
+kubectl run -it --rm --image xxradar/hackon hackon  -- bash
+```
+```
+kubectl run -it --rm --image xxradar/hackon -l fw-zone=dmz hackon -- bash
+```
 ## References
 
 * Kubeadm Install: https://docs.projectcalico.org/getting-started/kubernetes/quickstart
