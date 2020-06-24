@@ -172,7 +172,7 @@ kubectl apply -f calico.yaml
 ```
 watch kubectl get no
 ```
-##### Explore Kubernetes with Calico networking
+#### Explore Kubernetes with Calico networking
 
 Let's look around and explore
 
@@ -200,8 +200,7 @@ sudo mkdir -p /etc/calico
 sudo cp calicoctl.cfg /etc/calico
 ```
 ```
-sudo mkdir -p /etc/calico
-sudo cp calicoctl.cfg /etc/calico
+calicoctl version
 ```
 
 2. Check out the Calico node status.
