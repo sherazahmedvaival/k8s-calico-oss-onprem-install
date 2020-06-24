@@ -159,10 +159,14 @@ curl https://docs.projectcalico.org/manifests/calico.yaml -o calico.yaml
 vi calico.yaml
 ```
 
-3. Configure the initial IP Pool prefix by setting `CALICO_IPV4POOL_CIDR` to 10.48.0.0/24
-
-4. Disable IP-in-IP encapsulation by setting `CALICO_IPV4POOL_IPIP` to `Never`
-
+3. Configure the initial IP Pool prefix by setting 
+```
+`CALICO_IPV4POOL_CIDR` to 10.48.0.0/24
+```
+4. Disable IP-in-IP encapsulation by setting `
+```
+CALICO_IPV4POOL_IPIP` to `Never`
+```
 5. Apply the `calico.yaml`
 
 ```
