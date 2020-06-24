@@ -66,7 +66,9 @@ sudo hostnamectl set-hostname `hostname -f`
 
 1. Initialize the kubernetes cluster with iptables mode kube-proxy
 
-`kubeadm-config-iptables-mode.yaml`
+```
+vi kubeadm-config-iptables-mode.yaml
+```
 
 ```
 ---
