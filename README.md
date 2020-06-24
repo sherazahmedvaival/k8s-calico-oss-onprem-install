@@ -170,13 +170,13 @@ kubectl apply -f calico.yaml
 ```
 6. See the control plane come completly
 ```
-kubectl apply -f calico.yaml
+watch kubectl get no
 ```
 ##### Explore Kubernetes with Calico networking
 
 Let's look around and explore
 
-4. Install and configure `calicoctl`
+1. Install and configure `calicoctl`
 
 ```
 curl -O -L  https://github.com/projectcalico/calicoctl/releases/download/v3.14.0/calicoctl
@@ -200,7 +200,7 @@ sudo mkdir -p /etc/calico
 sudo cp calicoctl.cfg /etc/calico
 ```
 
-1. Check out the Calico node status.
+2. Check out the Calico node status.
 
 ```
 sudo calicoctl node status
@@ -221,7 +221,7 @@ IPv6 BGP status
 No IPv6 peers found.
 ```
 
-2. Verify your IP pool settings
+3. Verify your IP pool settings
 
 ```
 calicoctl get ippools default-ipv4-ippool -o yaml
@@ -244,7 +244,7 @@ spec:
   vxlanMode: Never
 ```
 
-13. Check out our IP pool utilization
+4. Check out our IP pool utilization
 
 ```
 calicoctl ipam show
