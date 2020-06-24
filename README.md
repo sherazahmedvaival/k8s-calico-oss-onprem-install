@@ -83,7 +83,6 @@ mode: iptables
 ```
 
 ```
-sudo kubeadm reset -f
 sudo kubeadm init --config kubeadm-config-iptables-mode.yaml
 ```
 
