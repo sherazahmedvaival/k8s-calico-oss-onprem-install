@@ -88,7 +88,15 @@ mode: iptables
 sudo kubeadm init --config kubeadm-config-iptables-mode.yaml
 ```
 
-2. Copy the kubectl config into place
+
+2. You should see an output similar to below. It will be different and unique to your environment.
+
+```
+kubeadm join 10.0.0.10:6443 --token 0d3aqz.u2bmp0zwlfdh5pmt \
+  --discovery-token-ca-cert-hash sha256:726cf64d358aded6a6584271c5342178f10834e254bfe8ff08357dcc3c6af877
+```  
+  
+3. Copy the kubectl config into place
 
 ```
 mkdir -p $HOME/.kube
@@ -96,12 +104,6 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-3. You should see an output similar to below. It will be different and unique to your environment.
-
-```
-kubeadm join 10.0.0.10:6443 --token 0d3aqz.u2bmp0zwlfdh5pmt \
-  --discovery-token-ca-cert-hash sha256:726cf64d358aded6a6584271c5342178f10834e254bfe8ff08357dcc3c6af877
-```
 4. Monitor the K8S nodes
 ```
 watch kubectl get no
