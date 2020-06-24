@@ -69,6 +69,7 @@ sudo hostnamectl set-hostname `hostname -f`
 `kubeadm-config-iptables-mode.yaml`
 
 ```
+---
 apiVersion: kubeadm.k8s.io/v1beta2
 kind: ClusterConfiguration
 networking:
@@ -100,29 +101,9 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 kubeadm join 10.0.0.10:6443 --token 0d3aqz.u2bmp0zwlfdh5pmt \
   --discovery-token-ca-cert-hash sha256:726cf64d358aded6a6584271c5342178f10834e254bfe8ff08357dcc3c6af877
 ```
-
-4. Install and configure `calicoctl`
-
+4. Monitor the K8S nodes
 ```
-curl -O -L  https://github.com/projectcalico/calicoctl/releases/download/v3.14.0/calicoctl
-chmod +x calicoctl
-sudo mv calicoctl /usr/local/bin
-```
-
-`calicoctl.cfg`
-
-```
-apiVersion: projectcalico.org/v3
-kind: CalicoAPIConfig
-metadata:
-spec:
-  datastoreType: "kubernetes"
-  kubeconfig: "/home/ubuntu/.kube/config"
-```
-
-```
-sudo mkdir -p /etc/calico
-sudo cp calicoctl.cfg /etc/calico
+watch kubectl get no
 ```
 
 #### Each Worker node
@@ -131,13 +112,9 @@ sudo cp calicoctl.cfg /etc/calico
 
 1. Login to workers
 
-2. Reset kubeadm
-
-```
-sudo kubeadm reset
-```
-
-3. Copy the command from step 3 above and run it on each of your worker nodes. It will look similar to below except you'll have a different token and hash. Make sure you run the command on each worker as root or with sudo.
+2. Copy the command from step 3 above and run it on each of your worker nodes. 
+It will look similar to below except you'll have a different token and hash. 
+Make sure you run the command on each worker as root or with sudo.
 
 ```
 sudo kubeadm join 10.0.0.10:6443 --token 42sy8h.gg7su3eb12dvbu76 --discovery-token-ca-cert-hash sha256:b34cc7c3ee43d7476639624d9b2da9fed9365b7f79525b5c15030f37114a4ccb
@@ -160,7 +137,8 @@ This node has joined the cluster:
 Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
 ```
 
-4. Login to the other workers and repeat steps 2 and 3.
+3. Login to the other workers and repeat steps 2
+
 
 ##### Only Master node
 
@@ -191,6 +169,30 @@ kubectl apply -f calico.yaml
 ##### Explore Kubernetes with Calico networking
 
 Let's look around and explore
+
+4. Install and configure `calicoctl`
+
+```
+curl -O -L  https://github.com/projectcalico/calicoctl/releases/download/v3.14.0/calicoctl
+chmod +x calicoctl
+sudo mv calicoctl /usr/local/bin
+```
+
+`calicoctl.cfg`
+
+```
+apiVersion: projectcalico.org/v3
+kind: CalicoAPIConfig
+metadata:
+spec:
+  datastoreType: "kubernetes"
+  kubeconfig: "/home/ubuntu/.kube/config"
+```
+
+```
+sudo mkdir -p /etc/calico
+sudo cp calicoctl.cfg /etc/calico
+```
 
 1. Check out the Calico node status.
 
