@@ -143,7 +143,7 @@ Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
 3. Login to the other workers and repeat steps 2
 
 
-##### Only Master node
+#### Only Master node
 
 ##### Configure and Install Calico
 
@@ -195,6 +195,10 @@ spec:
   kubeconfig: "/home/ubuntu/.kube/config"
 ```
 
+```
+sudo mkdir -p /etc/calico
+sudo cp calicoctl.cfg /etc/calico
+```
 ```
 sudo mkdir -p /etc/calico
 sudo cp calicoctl.cfg /etc/calico
