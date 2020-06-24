@@ -279,7 +279,7 @@ calicoctl ipam show --show-blocks
 +----------+----------------+-----------+------------+-----------+
 ```
 
-##### Simple Calico network policy example
+#### Simple Calico network policy example
 
 1.  Inspect the network policies
 
