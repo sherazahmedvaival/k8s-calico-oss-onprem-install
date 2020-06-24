@@ -172,9 +172,9 @@ kubectl apply -f calico.yaml
 ```
 watch kubectl get no
 ```
-#### Explore Kubernetes with Calico networking
+### Explore Kubernetes with Calico networking
 
-Let's look around and explore
+#### Let's look around and explore
 
 1. Install and configure `calicoctl`
 
@@ -318,12 +318,12 @@ default     restricted
 default     trusted
 
 ```
+5. Let's run some tests
 
 ```
 kubectl run --image nginx nginx --port=80  -l fw-zone=trusted
 kubectl  get po -o wide
 ```
-
 ```
 kubectl run -it --rm --image xxradar/hackon hackon  -- bash
 ```
