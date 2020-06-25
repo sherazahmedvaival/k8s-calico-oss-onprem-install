@@ -334,6 +334,16 @@ kubectl run -it --rm --image xxradar/hackon hackon  -- bash
 ```
 kubectl run -it --rm --image xxradar/hackon -l fw-zone=dmz hackon -- bash
 ```
+
+
+### Adding a new ippool for a specific namespace
+
+```
+calicoctp apply -f 10.48.1.0-ippool.yaml
+kubectl create namespace internal-ns
+kubectl annotate namespace internal-ns "cni.projectcalico.org/ipv4pools"="[\"new-pool\"]" --overwrite
+kubectl run nginx --image nginx --namespace internal-ns
+```
 ## References
 
 * Kubeadm Install: https://docs.projectcalico.org/getting-started/kubernetes/quickstart
