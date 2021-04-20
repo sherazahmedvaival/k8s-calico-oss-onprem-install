@@ -47,11 +47,11 @@ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
 sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
 sudo apt update -y
 sudo apt install -y \
-	docker.io \
-	watch \
-	ipvsadm \
-	ipset \
-	tcpdump 
+ docker.io \
+ watch \
+ ipvsadm \
+ ipset \
+ tcpdump 
 sudo apt install -y kubeadm=${K8SVERSION} kubelet=${K8SVERSION} kubectl=${K8SVERSION} 
 sudo systemctl enable docker
 sudo docker --version
